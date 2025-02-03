@@ -12,7 +12,10 @@ const app = express();
 const PORT = process.env.PORT || 6000;
 
 app.use(cookieParser());
-
+app.use((req, res, next) => {
+  res.header({"Access-Control-Allow-Origin": "*"});
+  next();
+})
 app.use(cors({
   origin: ["http://localhost:5173"],
   credentials: true,
