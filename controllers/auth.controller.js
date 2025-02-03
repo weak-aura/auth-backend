@@ -30,8 +30,8 @@ const signup = async (req, res) => {
     })
 
     if (newUser) {
-      await newUser.save();
       await generateToken(newUser._id, res)
+      await newUser.save();
       res.status(201).json({newUser, message: "Вы зарегестрированы", status: true})
     } else {
       return res.status(400).json({error: "Неверные данные пользователя"})
