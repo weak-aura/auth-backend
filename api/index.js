@@ -3,11 +3,8 @@ const dotenv = require("dotenv");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 
-const connectMongoDB = require("./database/mongoDB")
-const {authRoutes} = require("./routes/auth.routes")
-const jwt = require("jsonwebtoken");
-const {generateAccessToken} = require("./utils/generateToken");
-const User = require("./models/user.model");
+const connectMongoDB = require("../database/mongoDB")
+const {authRoutes} = require("../routes/auth.routes")
 
 dotenv.config();
 
@@ -17,9 +14,8 @@ const PORT = process.env.PORT || 6000;
 app.use(cookieParser());
 app.use(cors({
   origin: ["http://localhost:5173"],
-  methods: ["POST", "GET"],
   credentials: true,
-  strict: "same"
+  // strict: "same"
 }))
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
