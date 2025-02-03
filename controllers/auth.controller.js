@@ -54,7 +54,7 @@ const login = async (req, res) => {
     
     const existingUser = await UserModel.findOne({name})
     if (!existingUser) {
-      return res.status(400).json({error: "Пользователь с такой почтой не существует"})
+      return res.status(400).json({error: "Пользователь с таким именем не существует"})
     }
     
     const comparePassword = await bcrypt.compare(password, existingUser?.password || "")
