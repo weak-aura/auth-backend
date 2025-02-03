@@ -24,9 +24,9 @@ app.use(express.urlencoded({extended: true}));
 
 app.use("/api/auth", authRoutes)
 
-// app.get("/", (req,res) => {
-//   res.status(200).json({message: "it is working"})
-// })
+app.get("/test", (req,res) => {
+  res.status(200).json({message: "it is working"})
+})
 
 app.listen(PORT, () => {
   console.log(`server is running on port: ${PORT}`)
