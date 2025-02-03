@@ -25,7 +25,7 @@ app.use(express.urlencoded({extended: true}));
 
 app.use("/api/auth", authRoutes)
 
-app.get("/test", (req,res) => {
+app.get("/", (req,res) => {
   res.status(200).json({message: "it is working"})
 })
 
