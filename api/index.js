@@ -9,12 +9,14 @@ const {authRoutes} = require("../routes/auth.routes")
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 6000;
+const PORT = process.env.PORT || 2000;
+const environment = process.env.NODE_ENV === "production"? process.env.CORS_URL_PRODUCTION : process.env.CORS_URL_DEVELOPMENT;
+
 
 app.use(cookieParser());
 
 app.use(cors({
-  origin: ["https://auth-frontend-blond.vercel.app"],
+  origin: environment,
   credentials: true,
 }))
 
@@ -31,7 +33,7 @@ connectionMongoDB(process.env.MONGODB_URI)
   .then(() => {
     console.log("connected to mongodb")
     app.listen(PORT, () => {
-      console.log(`server is running on port: ${PORT}`)
+      console.log(`server is running on port: http://localhost:${process.env.PORT}`)
     })
   })
   .catch((error) => {
