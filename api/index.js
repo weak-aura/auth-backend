@@ -10,13 +10,13 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 2000;
-const environment = process.env.NODE_ENV === "production"? process.env.CORS_URL_PRODUCTION : process.env.CORS_URL_DEVELOPMENT;
+// const environment = process.env.NODE_ENV === "production"? process.env.CORS_URL_PRODUCTION : process.env.CORS_URL_DEVELOPMENT;
 
 
 app.use(cookieParser());
 
 app.use(cors({
-  origin: environment,
+  origin: process.env.CORS_URL_DEVELOPMENT,
   credentials: true,
 }))
 
